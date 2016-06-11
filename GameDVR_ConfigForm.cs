@@ -88,7 +88,7 @@ namespace GameDVR_Config
         {
             int height;
             try { height = Convert.ToInt32(HeightTextBox.Text); }
-            catch { height = 1280; }
+            catch { height = 720; }
 
             SetInt("CustomVideoEncodingHeight", height);
         }

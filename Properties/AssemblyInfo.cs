@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die einer Assembly zugeordnet sind.
 [assembly: AssemblyTitle("GameDVR_Config")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("https://github.com/FunkyFr3sh/GameDVR_Config")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("cncnet.org")]
+[assembly: AssemblyCompany("https://github.com/FunkyFr3sh/GameDVR_Config")]
 [assembly: AssemblyProduct("GameDVR_Config")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
