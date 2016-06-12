@@ -24,7 +24,6 @@ namespace GameDVR_Config
             EnableAudioCaptureCheckBox.Checked = GetBool("AudioCaptureEnabled", true);
             EnableMicrophoneCaptureCheckBox.Checked = GetBool("MicrophoneCaptureEnabled", false);
             int audioBitrate = GetInt("AudioEncodingBitrate", 192000);
-            AudioBitrateComboBox.SelectedIndex = 3;
             try { AudioBitrateComboBox.SelectedItem = (audioBitrate / 1000).ToString(); }
             finally
             {
@@ -36,6 +35,8 @@ namespace GameDVR_Config
             ResizeVideoCheckBox.Checked = GetInt("VideoEncodingResolutionMode", 2) == 0;
             WidthTextBox.Text = GetInt("CustomVideoEncodingWidth", 1280).ToString();
             HeightTextBox.Text = GetInt("CustomVideoEncodingHeight", 720).ToString();
+            ForceSoftwareMFTCheckBox.Checked = GetBool("ForceSoftwareMFT", false);
+            DisableCursorBlendingCheckBox.Checked = GetBool("DisableCursorBlending", false);
 
             SetInt("VideoEncodingBitrateMode", 0);
         }
@@ -91,6 +92,17 @@ namespace GameDVR_Config
             catch { height = 720; }
 
             SetInt("CustomVideoEncodingHeight", height);
+        }
+
+        private void ForceSoftwareMFTCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            SetBool("ForceSoftwareMFT", ForceSoftwareMFTCheckBox.Checked);
+            SetBool("AllowSoftwareEncode", ForceSoftwareMFTCheckBox.Checked);
+        }
+
+        private void DisableCursorBlendingCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            SetBool("DisableCursorBlending", DisableCursorBlendingCheckBox.Checked);
         }
 
         int GetInt(string valueName, int defaultValue)

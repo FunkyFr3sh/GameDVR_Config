@@ -42,6 +42,8 @@
             this.WidthTextBox = new System.Windows.Forms.TextBox();
             this.HeightTextBox = new System.Windows.Forms.TextBox();
             this.EnableMicrophoneCaptureCheckBox = new System.Windows.Forms.CheckBox();
+            this.ForceSoftwareMFTCheckBox = new System.Windows.Forms.CheckBox();
+            this.DisableCursorBlendingCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // EnableGameDVRCheckBox
@@ -239,12 +241,44 @@
             this.EnableMicrophoneCaptureCheckBox.UseVisualStyleBackColor = true;
             this.EnableMicrophoneCaptureCheckBox.CheckedChanged += new System.EventHandler(this.EnableMicrophoneCaptureCheckBox_CheckedChanged);
             // 
+            // ForceSoftwareMFTCheckBox
+            // 
+            this.ForceSoftwareMFTCheckBox.AutoSize = true;
+            this.ForceSoftwareMFTCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ForceSoftwareMFTCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.ForceSoftwareMFTCheckBox.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.ForceSoftwareMFTCheckBox.Location = new System.Drawing.Point(17, 321);
+            this.ForceSoftwareMFTCheckBox.Margin = new System.Windows.Forms.Padding(8);
+            this.ForceSoftwareMFTCheckBox.Name = "ForceSoftwareMFTCheckBox";
+            this.ForceSoftwareMFTCheckBox.Size = new System.Drawing.Size(288, 24);
+            this.ForceSoftwareMFTCheckBox.TabIndex = 14;
+            this.ForceSoftwareMFTCheckBox.Text = "Force Software MFT (16 FPS + VBR)";
+            this.ForceSoftwareMFTCheckBox.UseVisualStyleBackColor = true;
+            this.ForceSoftwareMFTCheckBox.CheckedChanged += new System.EventHandler(this.ForceSoftwareMFTCheckBox_CheckedChanged);
+            // 
+            // DisableCursorBlendingCheckBox
+            // 
+            this.DisableCursorBlendingCheckBox.AutoSize = true;
+            this.DisableCursorBlendingCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DisableCursorBlendingCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.DisableCursorBlendingCheckBox.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.DisableCursorBlendingCheckBox.Location = new System.Drawing.Point(17, 361);
+            this.DisableCursorBlendingCheckBox.Margin = new System.Windows.Forms.Padding(8);
+            this.DisableCursorBlendingCheckBox.Name = "DisableCursorBlendingCheckBox";
+            this.DisableCursorBlendingCheckBox.Size = new System.Drawing.Size(195, 24);
+            this.DisableCursorBlendingCheckBox.TabIndex = 15;
+            this.DisableCursorBlendingCheckBox.Text = "Disable Cursor Blending";
+            this.DisableCursorBlendingCheckBox.UseVisualStyleBackColor = true;
+            this.DisableCursorBlendingCheckBox.CheckedChanged += new System.EventHandler(this.DisableCursorBlendingCheckBox_CheckedChanged);
+            // 
             // GameDVR_ConfigForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
-            this.ClientSize = new System.Drawing.Size(381, 332);
+            this.ClientSize = new System.Drawing.Size(381, 412);
+            this.Controls.Add(this.DisableCursorBlendingCheckBox);
+            this.Controls.Add(this.ForceSoftwareMFTCheckBox);
             this.Controls.Add(this.EnableMicrophoneCaptureCheckBox);
             this.Controls.Add(this.HeightTextBox);
             this.Controls.Add(this.WidthTextBox);
@@ -286,6 +320,8 @@
         private System.Windows.Forms.TextBox WidthTextBox;
         private System.Windows.Forms.TextBox HeightTextBox;
         private System.Windows.Forms.CheckBox EnableMicrophoneCaptureCheckBox;
+        private System.Windows.Forms.CheckBox ForceSoftwareMFTCheckBox;
+        private System.Windows.Forms.CheckBox DisableCursorBlendingCheckBox;
     }
 }
 
