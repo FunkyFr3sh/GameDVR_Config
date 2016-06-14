@@ -37,6 +37,10 @@ namespace GameDVR_Config
             HeightTextBox.Text = GetInt("CustomVideoEncodingHeight", 720).ToString();
             ForceSoftwareMFTCheckBox.Checked = GetBool("ForceSoftwareMFT", false);
             DisableCursorBlendingCheckBox.Checked = GetBool("DisableCursorBlending", false);
+            BackgroundRecordingCheckBox.Checked = GetBool("HistoricalCaptureEnabled", false);
+            RecordTheLastTextBox.Text = GetInt("HistoricalBufferLength", 15).ToString();
+            RecordOnBatteryCheckBox.Checked = GetBool("HistoricalCaptureOnBatteryAllowed", true);
+            RecordOnWirelessDisplayCheckBox.Checked = GetBool("HistoricalCaptureOnWirelessDisplayAllowed", true);
 
             SetInt("VideoEncodingBitrateMode", 0);
         }
@@ -67,7 +71,7 @@ namespace GameDVR_Config
             try { videoBitrate = Convert.ToInt32(VideoBitrateTextBox.Text) * 1000; }
             catch { videoBitrate = 4000000; }
 
-            SetInt("CustomVideoEncodingBitrate", videoBitrate);
+            SetInt("CustomVideoEncodingBitrate", videoBitrate > 30000000 ? 30000000 : videoBitrate);
         }
 
         private void ResizeVideoCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -82,7 +86,7 @@ namespace GameDVR_Config
             try { width = Convert.ToInt32(WidthTextBox.Text); }
             catch { width = 1280; }
 
-            SetInt("CustomVideoEncodingWidth", width);
+            SetInt("CustomVideoEncodingWidth", width > 1920 ? 1920 : width);
         }
 
         private void HeightTextBox_TextChanged(object sender, EventArgs e)
@@ -91,7 +95,7 @@ namespace GameDVR_Config
             try { height = Convert.ToInt32(HeightTextBox.Text); }
             catch { height = 720; }
 
-            SetInt("CustomVideoEncodingHeight", height);
+            SetInt("CustomVideoEncodingHeight", height > 1080 ? 1080 : height);
         }
 
         private void ForceSoftwareMFTCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -103,6 +107,32 @@ namespace GameDVR_Config
         private void DisableCursorBlendingCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             SetBool("DisableCursorBlending", DisableCursorBlendingCheckBox.Checked);
+        }
+
+        private void BackgroundRecordingCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            SetBool("HistoricalCaptureEnabled", BackgroundRecordingCheckBox.Checked);
+            RecordTheLastLabel.Enabled = RecordTheLastTextBox.Enabled = RecordOnBatteryCheckBox.Enabled = 
+                RecordOnWirelessDisplayCheckBox.Enabled = SecondsLabel.Enabled = BackgroundRecordingCheckBox.Checked;
+        }
+
+        private void RecordTheLastTextBox_TextChanged(object sender, EventArgs e)
+        {
+            int seconds;
+            try { seconds = Convert.ToInt32(RecordTheLastTextBox.Text); }
+            catch { seconds = 15; }
+
+            SetInt("HistoricalBufferLength", seconds);
+        }
+
+        private void RecordOnBatteryCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            SetBool("HistoricalCaptureOnBatteryAllowed", RecordOnBatteryCheckBox.Checked);
+        }
+
+        private void RecordOnWirelessDisplayCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            SetBool("HistoricalCaptureOnWirelessDisplayAllowed", RecordOnWirelessDisplayCheckBox.Checked);
         }
 
         int GetInt(string valueName, int defaultValue)
